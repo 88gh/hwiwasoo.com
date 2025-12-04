@@ -13,7 +13,7 @@ body {
   padding: 0 !important;
   width: 100%;
   overflow-x: hidden;
-  font-family: 'Libre Baskerville', 'LXGW WenKai TC', serif;
+  font-family: 'Libre Baskerville', 'Noto Serif KR', serif;
   background-color: #f8f9fa;
   color: var(--text-dark);
   line-height: 1.6;
