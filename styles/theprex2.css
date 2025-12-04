@@ -1,43 +1,72 @@
-/* 1) Custom font face (TitleMedium) */
-/* @font-face {
-    font-family: 'TitleMedium';
-    src: url('https://raw.githubusercontent.com/88gh/3sunbi.com/main/styles/Title_Medium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}*/
+/* ============ CSS VARIABLES ============ */
+:root {
+  --primary-color: #105346;
+  --secondary-color: #D4A574;
+  --accent-color: #C67B5C;
+  --text-dark: #2C3E50;
+  --bg-light: #F5F5F0;
+}
 
-/* 2) Base body styling */
-/*body {
-    margin: 0;
-    font-family: 'TitleMedium', sans-serif;  
-    background-color: #f8f9fa;               
-    color: #202022;                         
-    line-height: 1.6;
-}*/
-
+/* ============ BASE STYLING ============ */
 body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-    overflow-x: hidden;
-    /* font-family: 'Libre Baskerville', 'Gowun Batang', 'Sawarabi Mincho', serif;  /* use TitleMedium + fallback */
-    font-family: 'LXGW WenKai TC', 'Gowun Batang', serif;
-    background-color: #f8f9fa;               /* light background */
-    color: #202022;                          /* dark text */
-    line-height: 1.6;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'LXGW WenKai TC', 'Noto Serif KR', 'Gowun Batang', serif;
+  background-color: #f8f9fa;
+  color: var(--text-dark);
+  line-height: 1.6;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============ TYPOGRAPHY ============ */
+h2 {
+  color: #202022;
+  font-size: 22px;
+  padding: 8px;
+  margin-top: 56px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  color: #202022;
+  font-size: 18px;
+  padding: 7px;
+  padding-bottom: 0px;
+}
+
+h4 {
+  color: #202022;
+  font-size: 16px;
+  padding: 7px;
+  padding-bottom: 0px;
+}
+
+p, li {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* ============ GRADIENT TEXT ============ */
 .gradient-text {
-    background: none;
-    -webkit-background-clip: unset;
-    background-clip: unset;
-    color: #021658; /* Your normal dark text color */
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: #021658;
 }
 
+.gradient-text-hww {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-/* ============ HEADER TRANSITION STYLING ============ */
-
-/* The header container - always fixed at top */
+/* ============ HEADER STYLING ============ */
 #site-header {
   position: fixed;
   top: 0;
@@ -46,45 +75,36 @@ body {
   height: 82px;
   z-index: 1000;
   overflow: hidden;
-  /* Default transparent state */
   background: transparent;
-  /* Add smooth transition for background changes */
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* Transparent state (on video) */
 #site-header.transparent {
   background: transparent;
   backdrop-filter: none;
 }
 
-/* White state (scrolled past video) */
 #site-header.scrolled {
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Remove the overlay */
 #site-header::before {
   display: none;
 }
 
-/* Always show the normal header */
 #site-header .normal-header-container {
   display: block;
-  padding-top: 12px;
-  padding-bottom: 40px;
+  padding: 0.8rem 0;
   position: relative;
   background: transparent;
 }
 
-/* Remove the lines at the bottom */
 .normal-header-container::after {
   display: none;
 }
 
-/* The normal header-inner: flex for logo left, tabs right, vertically centered */
 .header-inner {
   width: 100%;
   margin: 0 auto;
@@ -108,21 +128,18 @@ body {
   }
 }
 
-/* Logo styling with enhanced visibility */
 #logo {
   height: 60px;
   width: auto;
-  /* Add subtle shadow for better visibility on video */
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   transition: filter 0.3s ease;
 }
 
-/* Adjust logo shadow when header is white */
 #site-header.scrolled #logo {
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
 }
 
-/* Navigation styling that adapts to header state */
+/* ============ NAVIGATION ============ */
 .nav-link {
   display: inline-block;
   position: relative;
@@ -132,7 +149,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Transparent header navigation (white text for video) */
 #site-header.transparent .nav-link {
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -148,38 +164,19 @@ body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Scrolled header navigation (dark text for white background) */
 #site-header.scrolled .nav-link {
   color: #202022;
   text-shadow: none;
 }
 
 #site-header.scrolled .nav-link:hover {
-  color: #021658;
+  color: #105346;
   text-shadow: none;
 }
 
 #site-header.scrolled .nav-link::after {
-  background-color: #021658;
+  background-color: #105346;
   box-shadow: none;
-}
-
-/* Enhanced navigation styling for better visibility on video */
-.nav-link {
-  display: inline-block;
-  position: relative;
-  color: #ffffff;             /* White text for contrast on video */
-  text-decoration: none;
-  padding: 0.5rem;
-  font-weight: 600;           /* Slightly bolder for better readability */
-  /* Add text shadow for better visibility */
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #ffffff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .nav-link::after {
@@ -189,7 +186,7 @@ body {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #ffffff;  /* White underline for contrast */
+  background-color: #ffffff;
   transition: width 0.3s ease;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
@@ -198,21 +195,18 @@ body {
   width: 100%;
 }
 
-/* Hide tabs on screens below 768px */
 @media (max-width: 767px) {
   .tabs {
     display: none !important;
   }
 }
 
-/* ============ RESPONSIVE VIDEO HERO SECTION ============ */
-
-/* Video hero container - full viewport coverage */
+/* ============ VIDEO HERO SECTION ============ */
 .video-hero {
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden; /* This is crucial - hides overflow on narrow screens */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,28 +216,21 @@ body {
   right: 0;
 }
 
-/* The video element - responsive sizing */
 .hero-video {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  /* Default: fit width, maintain aspect ratio */
   width: 100%;
   height: auto;
   min-width: 100%;
   min-height: 100%;
-  
-  /* Ensure video covers full area */
   object-fit: cover;
   object-position: center center;
 }
 
-/* For very narrow screens (mobile portrait) - prioritize full coverage */
 @media (max-width: 768px) {
   .hero-video {
-    /* Force full height coverage on mobile */
     width: auto;
     height: 100%;
     min-width: 100%;
@@ -251,54 +238,74 @@ body {
   }
 }
 
-/* For extremely narrow screens */
 @media (max-width: 480px) {
   .hero-video {
-    /* Ensure minimum width coverage even if video gets cropped */
-    min-width: 120%; /* This ensures sides get cropped rather than showing black bars */
+    min-width: 120%;
     object-fit: cover;
   }
 }
 
-/* Optional: Add a subtle gradient overlay on video for better text readability */
 .video-hero::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 150px; /* Cover the header area */
+  height: 150px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
   z-index: 1;
   pointer-events: none;
 }
 
-/* ============ ============ */
-.square-profile {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  object-position: center;
-}
-.square-button {
-  width: 70px;   /* fixed width */
-  height: 70px;  /* square shape */
-  object-fit: cover;
-  object-position: center;
-  border-radius: 8px; /* optional rounding */
-}
-.links-content {
-  font-size: 0.42rem; /* you had 0.42rem */
+/* ============ HWIWASOO SPECIFIC COMPONENTS ============ */
+.team-profile {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ============ LAYOUT FOR SECTIONS, FOOTER, ETC. ============ */
-/* Responsive container with breakpoints (768px, 992px, 1200px) */
+.team-profile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.mission-card {
+  background: linear-gradient(135deg, rgba(123, 158, 168, 0.1), rgba(212, 165, 116, 0.1));
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.value-item {
+  background: white;
+  border-left: 4px solid var(--primary-color);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.research-highlight {
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 2rem 0;
+}
+
+section {
+  background: var(--bg-light);
+}
+
+section:nth-child(even) {
+  background: white;
+}
+
+/* ============ LAYOUT & CONTAINERS ============ */
 .container {
   width: 100%;
   margin: auto;
   text-align: center;
   padding: 7px;
-  max-width: 768px; /* default for tablet and up */
+  max-width: 768px;
 }
 
 @media (min-width: 992px) {
@@ -313,309 +320,45 @@ body {
   }
 }
 
-/* BUTTON            @@@@@@@@@@@@@@@@@@@@@   starts*/
-
-.btn.btn-success.btn-psunbi {
-  background-color: #B3A08D !important;
-  border-color: #B3A08D !important;
-  color: #fff !important;
-}
-.btn.btn-success.btn-psunbi:hover {
-  background-color: #9e8f7f !important; /* Slightly darker shade */
-  border-color: #9e8f7f !important;
+/* ============ IMAGES ============ */
+.square-profile {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
 }
 
-.btn.btn-success.btn-hsunbi {
-  background-color: #315834 !important;
-  border-color: #315834 !important;
-  color: #fff !important;
-}
-.btn.btn-success.btn-hsunbi:hover {
-  background-color: #284a2c !important; /* Slightly darker for hover */
-  border-color: #284a2c !important;
+.square-button {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
 }
 
-.btn.btn-success.btn-nsunbi {
-  background-color: #5078a0 !important;
-  border-color: #5078a0 !important;
-  color: #fff !important;
-}
-.btn.btn-success.btn-nsunbi:hover {
-  background-color: #40638a !important; /* Slightly darker shade */
-  border-color: #40638a !important;
-}
-
-
-/* BUTTON            @@@@@@@@@@@@@@@@@@@@@    END */
-
-
-
-/* Career             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* Make the items horizontal by default */
-/* Only target #experience .exp-row, .exp-col, etc. */
-
-#career .exp-row {
-  display: flex;
-  align-items: flex-start; /* top-aligned instead of center */
-  margin-bottom: 1rem;
-  text-align: left; /* ensure left-alignment */
-}
-
-#career .exp-col-auto {
-  margin-right: 1rem;
-}
-
-#career .exp-col {
-  flex: 1;
-  /* Force left text alignment in case a parent is text-center */
-  text-align: left !important;
-}
-
-/* On small screens, stack vertically */
-@media (max-width: 767px) {
-  #career .exp-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  #career .exp-col-auto,
-  #career .exp-col {
-    width: 100%;
-  }
-  #career .exp-col-auto img {
-    margin-bottom: 0.5rem;
-  }
-}
-
-
-/* Career             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-
-/* timebox@@@@@@@@@@@@@timebox@@@@@@@@@@@@@timebox@@@@@@@@@@@@@timebox@@@@@@@@@@@@@ */
-/* 
-   1) Container that holds all timeboxes in a row, wrapping as needed.
-   If you want them left-aligned within a parent .history-card, 
-   just ensure .history-card doesn't force center alignment. 
-*/
-.timebox-list {
-  display: flex;
-  flex-wrap: wrap;         /* allow wrapping to new row if not enough width */
-  gap: 1rem;               /* space between boxes */
-  margin-top: 2rem;        /* optional top spacing */
-}
-
-/* 
-   2) Each timebox has a fixed width but can grow in height if needed.
-   This avoids text overlap with the line, since height is not forced.
-*/
-.timebox {
-  width: 100px;             /* within your desired 80–120px range */
-  box-sizing: border-box;
-  /*
-     Optional styling:
-     background: #fafafa;
-     border: 1px solid #ddd;
-     border-radius: 8px;
-     padding: 8px; (if you want a little inner padding)
-  */
-}
-
-/* 
-   3) The "above" (year) and "below" (content) sections stack vertically 
-      in normal flow, so if text is too long, it pushes the box downward 
-      instead of overlapping the line.
-*/
-
-.timebox-above {
-  text-align: center;
-  color: #444;
-  margin: 0.2rem 0;        /* spacing around those blocks */
-}
-
-.timebox-below {
-  text-align: left;
-  color: #444;
-  margin: 0.2rem 0;        /* spacing around those blocks */
-}
-
-/* 
-   4) The horizontal line + circle. We place the line in normal flow 
-      (height: 2px, full width), and the circle absolutely in the center 
-      of that line container.
-*/
-.timebox-line-container {
-  position: relative;       /* so the circle can be absolutely positioned inside */
-  width: 100%;
-  height: 2px;              /* thickness of the line */
-  background: #ccc;         /* line color */
-  margin: 0.8rem 0;         /* spacing above/below the line */
-}
-
-/* The circle inside the line container */
-.timebox-line-container::before {
-  content: "";
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 16px;
-  height: 16px;
-  background: #f97316;      /* circle color (orange) */
-  border-radius: 50%;
-  border: 2px solid #fff;   /* optional white border for contrast */
-}
-
-/* 
-   5) Headings & paragraphs in .timebox-above or .timebox-below 
-      so you can style them as you like.
-*/
-.timebox-above h3,
-.timebox-below h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: bold;
-}
-.timebox-above p,
-.timebox-below p {
-  margin: 0.25rem 0 0;
-  font-size: 0.85rem;
-  line-height: 1.3;
-}
-
-/* timebox@@@@@@@@@@@@@timebox@@@@@@@@@@@@@timebox@@@@@@@@@@@@@timebox@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@MINDMAP@@@ */
-/* The container for all circles (flex + wrap) */
-.circle-list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 1rem;
-  margin: 0 auto;     /* centers the container horizontally */
-  max-width: 70%;     /* default for screens >= 768px */
-}
-
-/* For small screens (under 768px) => 90% width */
-@media (max-width: 767px) {
-  .circle-list {
-    max-width: 90%;
-  }
-}
-
-/* Each circle item */
-.circle-item {
-  /* Use the custom property as background, else fallback to #3b82f6 */
-  background: var(--branch-color, #3b82f6);
-  color: #fff;
-
-  /* Circle shape */
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-
-  /* Center text inside */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  /* Optional shadow + styling */
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  font-size: 0.9rem;
-  padding: 0.5rem;
-}
-.circle-item2 {
-  /* Use the custom property as background, else fallback to #3b82f6 */
-  background: var(--branch-color, #3b82f6);
-  color: #fff;
-
-  /* Circle shape */
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-
-  /* Center text inside */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  /* Optional shadow + styling */
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  font-size: 1rem;
-  padding: 0.5rem;
-}
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@MINDMAP@@@ */
-
-
-h2 {
-    color: #202022;
-    font-size: 22px;
-    padding: 8px;
-    margin-top: 56px;
-    margin-bottom: 16px;
-}
-h3 {
-    color: #202022;
-    font-size: 18px;
-    padding: 7px;
-    padding-bottom: 0px;
-}
-h4 {
-    color: #202022;
-    font-size: 16px;
-    padding: 7px;
-    padding-bottom: 0px;
-}
-
-p, li {
-    font-size: 18px;
-}
-p {
-    margin: 0;
-}
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-ul li {
-    border-top: 1px solid #575757;
-    padding-top: 8px;
-    padding-bottom: 7px;
-}
-ul li:not(:last-child) {
-    margin-bottom: 10px;
-}
-
-#links p {
-  font-size: 16px !important;
-  /* also override line-height if needed */
-}
-
+/* ============ FOOTER ============ */
 footer {
-    padding: 0;
-    background-color: white;
-    color: black;
-    font-size: 0.6rem;
+  padding: 0;
+  background-color: white;
+  color: black;
+  font-size: 0.6rem;
 }
+
 footer * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
+
 footer .container {
-    padding: 0;
+  padding: 0;
 }
+
 footer a {
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
+
 footer a:hover,
 footer a:focus {
-    color: green;
-}
-
-/* Smooth scroll for anchor links */
-html {
-    scroll-behavior: smooth;
-}
-
-/* :lang(en) fallback font if needed */
-:lang(en) {
-    font-family: Arial, sans-serif;
+  color: green;
 }
