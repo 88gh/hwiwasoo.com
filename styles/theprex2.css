@@ -13,7 +13,7 @@ body {
   padding: 0 !important;
   width: 100%;
   overflow-x: hidden;
-  font-family: 'LXGW WenKai TC', 'Noto Serif KR', 'Gowun Batang', serif;
+  font-family: 'LXGW WenKai TC', 'Gowun Batang', serif;
   background-color: #f8f9fa;
   color: var(--text-dark);
   line-height: 1.6;
