@@ -20,7 +20,8 @@ body {
     padding: 0 !important;
     width: 100%;
     overflow-x: hidden;
-    font-family: 'Libre Baskerville', 'Gowun Batang', 'Sawarabi Mincho', serif;  /* use TitleMedium + fallback */
+    /* font-family: 'Libre Baskerville', 'Gowun Batang', 'Sawarabi Mincho', serif;  /* use TitleMedium + fallback */
+    font-family: 'LXGW WenKai TC', 'Gowun Batang', serif;
     background-color: #f8f9fa;               /* light background */
     color: #202022;                          /* dark text */
     line-height: 1.6;
